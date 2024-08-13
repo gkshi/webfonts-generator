@@ -7,11 +7,12 @@ var urlJoin = require('url-join')
 
 /** Caclulates hash based on options and source SVG files */
 var calcHash = function(options) {
+	console.log('## calcHash', options)
 	var hash = crypto.createHash('md5')
 	options.files.forEach(function(file) {
 		hash.update(fs.readFileSync(file, 'utf8'))
 	})
-	hash.update(JSON.stringify(options))
+	// hash.update(JSON.stringify(options))
 	return hash.digest('hex')
 }
 
